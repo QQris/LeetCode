@@ -5,11 +5,11 @@
 
 
 
-bool checkIfInList(char letter, char** list, int listSize, int initialValue, int* matchIndex) {
+bool checkIfInList(char letter, char* list, int listSize, int initialValue, int* matchIndex) {
     
     for (int i = initialValue; i < listSize; i++) {
-        
-        if (letter == (*list)[i]){
+
+        if (letter == list[i]){
             *matchIndex = i;
             return true;
         }
@@ -17,7 +17,7 @@ bool checkIfInList(char letter, char** list, int listSize, int initialValue, int
 
     /* If not in list, then add*/
 
-    (*list)[listSize] = letter;
+    list[listSize] = letter;
 
     return false;
 }
@@ -38,7 +38,7 @@ int lengthOfLongestSubstring(char* s) {
 
         int matchIndex = -1;
 
-        if (checkIfInList(s[a], &list, listSize, startFromValue, &matchIndex)) {
+        if (checkIfInList(s[a], list, listSize, startFromValue, &matchIndex)) {
                 startFromValue = matchIndex + 1;
                 currentValue = 0;
                 list[listSize] = s[a];
